@@ -6,7 +6,7 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
     nodejs
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
-RUN bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
+RUN bundle lock --add-platform arm-linux-eabihf && bundle add nokogiri
 RUN bundle install
 
 COPY . /usr/src/app/
